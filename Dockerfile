@@ -3,11 +3,9 @@ FROM jenkins/jenkins:lts-alpine
 USER root
 
 RUN rm -rf /var/cache/apk/* \
-#
+# install NodeJS
     && apk --update add nodejs \
-#
-    && apk del .build-deps \
-# test
+# Test
     && node -v \
     && npm -v
 
