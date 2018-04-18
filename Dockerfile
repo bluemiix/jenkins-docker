@@ -4,15 +4,11 @@ USER root
 
 RUN rm -rf /var/cache/apk/* \
 #
-    && apk update \
+    && apk --update add nodejs \
 #
-    && apk add --no-cache libstdc++ \
-#
-    && apk add --no-cache --virtual .build-deps \
-            g++ gcc libgcc gnupg libgc++ \
-#
-    && apk add nodejs \
-#
-    && apk del .build-deps
+    && apk del .build-deps \
+# test
+    && node -v \
+    && npm -v
 
 USER jenkins
